@@ -6,9 +6,7 @@ import api from '../../utils/api';
 import './HomePage.scss';
 import Loader from '../../shared/components/Loader';
 import merapiImage from '../../images/merapi.jpg';
-import contohImage from '../../images/contoh.jpeg';
-import beyonceImage from '../../images/beyonce.png';
-import hissImage from '../../images/hiss.png';
+import contohImage from '../../images/contoh.jpg';
 import { ArrowRight, ChevronLeft, ChevronRight, Menu } from 'lucide-react';
 import { formatCurrency } from '../../utils/formatCurrency';
 import SocialMediaIcon from '../../shared/components/SocialMediaIcon';
@@ -39,8 +37,6 @@ const HomePage = () => {
   // Custom carousel images
   const carouselImages = [
     { src: contohImage, alt: "Tanah Merapi Jeep Track" },
-    { src: beyonceImage, alt: "Beyonce Image" },
-    { src: hissImage, alt: "Hiss Image" }
   ];
   
   // Navbar functions
