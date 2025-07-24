@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import api from '../../utils/api';
 import './HomePage.scss';
 import Loader from '../../shared/components/Loader';
+import { getImageUrl } from '../../utils/imageUrl'; // Import the helper
 import merapiImage from '../../images/merapi.jpg';
 import contohImage from '../../images/contoh.jpg';
 import { ArrowRight, ChevronLeft, ChevronRight, Menu } from 'lucide-react';
@@ -287,7 +288,7 @@ const HomePage = () => {
               {slides.map((slide) => (
                 <div key={slide.id} className="hero-slide">
                   <img 
-                    src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${slide.image_url}`} 
+                    src={getImageUrl(slide.image_url)} 
                     alt={slide.title}
                   />
                   <div className="hero-overlay"></div>
@@ -411,9 +412,7 @@ const HomePage = () => {
             </div>
             <div className="about-image">
               <img 
-                src={siteSettings.home_image 
-                  ? `${process.env.REACT_APP_API_URL?.replace('/api', '')}${siteSettings.home_image}` 
-                  : merapiImage} 
+                src={getImageUrl(siteSettings.home_image) || merapiImage} 
                 alt="Tanah Merapi" 
               />
             </div>
@@ -435,7 +434,7 @@ const HomePage = () => {
               <div key={menuItem.id} className="menu-card">
                 <div className="menu-image">
                   <img 
-                    src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${menuItem.image_url}`} 
+                    src={getImageUrl(menuItem.image_url)} 
                     alt={menuItem.name}
                   />
                 </div>
@@ -464,7 +463,7 @@ const HomePage = () => {
               <div key={pkg.id} className="package-card">
                 <div className="package-image">
                   <img 
-                    src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${pkg.image_url}`} 
+                    src={getImageUrl(pkg.image_url)} 
                     alt={pkg.name}
                   />
                 </div>
@@ -521,7 +520,7 @@ const HomePage = () => {
                   {promotion.image_url && (
                     <div className="promotion-image">
                       <img 
-                        src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${promotion.image_url}`} 
+                        src={getImageUrl(promotion.image_url)} 
                         alt={promotion.title}
                       />
                     </div>

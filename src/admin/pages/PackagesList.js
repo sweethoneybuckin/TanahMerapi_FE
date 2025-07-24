@@ -9,6 +9,7 @@ import ImageUploader from '../components/ImageUploader';
 import Loader from '../../shared/components/Loader';
 import Message from '../../shared/components/Message';
 import api from '../../utils/api';
+import { getImageUrl } from '../../utils/imageUrl';
 import { Plus, MapPin, Percent, Tag } from 'lucide-react';
 import { formatCurrency } from '../../utils/formatCurrency';
 
@@ -192,7 +193,7 @@ const PackagesList = () => {
       render: (row) => (
         <div className="package-image">
           <img 
-            src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${row.image_url}`} 
+            src={getImageUrl(row.image_url)} 
             alt={row.name}
           />
           {row.discount_percent > 0 && (
@@ -469,7 +470,7 @@ const PackagesList = () => {
           <div className="package-detail">
             <div className="detail-image">
               <img 
-                src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${currentPackage.image_url}`} 
+                src={getImageUrl(currentPackage.image_url)} 
                 alt={currentPackage.name} 
               />
               {currentPackage.discount_percent > 0 && (

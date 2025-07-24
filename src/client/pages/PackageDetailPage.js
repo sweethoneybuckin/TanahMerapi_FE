@@ -5,6 +5,7 @@ import api from '../../utils/api';
 import './PackageDetailPage.scss';
 import Loader from '../../shared/components/Loader';
 import { formatCurrency } from '../../utils/formatCurrency';
+import { getImageUrl } from '../../utils/imageUrl'; // Import the helper
 import { ArrowLeft, Package, Menu } from 'lucide-react';
 import SocialMediaIcon from '../../shared/components/SocialMediaIcon';
 import logoImage from '../../images/logo.png';
@@ -252,7 +253,7 @@ const PackageDetailPage = () => {
         <div className="package-detail">
           <div className="package-image">
             <img 
-              src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${packageData.image_url}`} 
+              src={getImageUrl(packageData.image_url)} 
               alt={packageData.name}
             />
           </div>
@@ -307,7 +308,7 @@ const PackageDetailPage = () => {
                 <Link key={pkg.id} to={`/packages/${pkg.id}`} className="related-card">
                   <div className="related-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${pkg.image_url}`} 
+                      src={getImageUrl(pkg.image_url)} 
                       alt={pkg.name}
                     />
                   </div>

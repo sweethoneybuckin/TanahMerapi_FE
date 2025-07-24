@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ImageUploader.scss';
 import { Upload, X } from 'lucide-react';
 import ImagePreview from '../../shared/components/ImagePreview';
+import { getImageUrl } from '../../utils/imageUrl';
 
 const ImageUploader = ({
   onChange,
@@ -46,13 +47,8 @@ const ImageUploader = ({
     if (!preview) return null;
     
     if (typeof preview === 'string') {
-      // If preview is a URL string
-      if (preview.startsWith('http') || preview.startsWith('/')) {
-        return preview;
-      }
-      
-      // If preview is a relative path
-      return `${apiUrl?.replace('/api', '')}${preview}`;
+      // Use our utility function to handle both Cloudinary and local URLs
+      return getImageUrl(preview);
     }
     
     // If preview is a File object

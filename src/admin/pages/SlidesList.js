@@ -8,6 +8,7 @@ import ImageUploader from '../components/ImageUploader';
 import Loader from '../../shared/components/Loader';
 import Message from '../../shared/components/Message';
 import api from '../../utils/api';
+import { getImageUrl } from '../../utils/imageUrl';
 import { Plus, Eye, Trash2 } from 'lucide-react';
 
 const SlidesList = () => {
@@ -182,7 +183,7 @@ const SlidesList = () => {
       render: (row) => (
         <div className="slide-image">
           <img 
-            src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${row.image_url}`} 
+            src={getImageUrl(row.image_url)} 
             alt={row.title}
           />
         </div>
@@ -358,7 +359,7 @@ const SlidesList = () => {
           <div className="slide-detail">
             <div className="detail-image">
               <img 
-                src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${currentSlide.image_url}`} 
+                src={getImageUrl(currentSlide.image_url)} 
                 alt={currentSlide.title} 
               />
             </div>

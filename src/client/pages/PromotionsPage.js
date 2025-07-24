@@ -4,6 +4,7 @@ import api from '../../utils/api';
 import './PromotionsPage.scss';
 import Loader from '../../shared/components/Loader';
 import { formatDate } from '../../utils/formatCurrency';
+import { getImageUrl } from '../../utils/imageUrl'; // Import the helper
 import { Tag, Percent, Calendar, AlertCircle, Ticket, Menu } from 'lucide-react';
 import logoImage from '../../images/logo.png';
 
@@ -177,7 +178,7 @@ const PromotionsPage = () => {
                   {promotion.image_url && (
                     <div className="promotion-card-image">
                       <img 
-                        src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${promotion.image_url}`} 
+                        src={getImageUrl(promotion.image_url)} 
                         alt={promotion.title}
                       />
                       <div className="discount-badge">

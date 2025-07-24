@@ -4,6 +4,7 @@ import './PromotionDetailPage.scss';
 import Loader from '../../shared/components/Loader';
 import Message from '../../shared/components/Message';
 import api from '../../utils/api';
+import { getImageUrl } from '../../utils/imageUrl';
 import { Calendar, Package, Percent, ArrowLeft, Clock, Info } from 'lucide-react';
 import { formatCurrency, formatDate } from '../../utils/formatCurrency';
 
@@ -119,12 +120,12 @@ const PromotionDetailPage = () => {
         <div className="promotion-hero">
           <div className="hero-image">
             <img 
-              src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${promotion.image_url}`} 
+              src={getImageUrl(promotion.image_url)} 
               alt={promotion.title}
               onError={(e) => {
                 // Fallback to first package image if promotion image fails
                 if (promotion.packages && promotion.packages[0]) {
-                  e.target.src = `${process.env.REACT_APP_API_URL?.replace('/api', '')}${promotion.packages[0].image_url}`;
+                  e.target.src = getImageUrl(promotion.packages[0].image_url);
                 }
               }}
             />
@@ -183,7 +184,7 @@ const PromotionDetailPage = () => {
                 <div key={pkg.id} className="package-card">
                   <div className="package-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${pkg.image_url}`} 
+                      src={getImageUrl(pkg.image_url)} 
                       alt={pkg.name}
                     />
                     <div className="discount-overlay">

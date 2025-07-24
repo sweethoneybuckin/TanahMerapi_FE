@@ -8,6 +8,7 @@ import ImageUploader from '../components/ImageUploader';
 import Loader from '../../shared/components/Loader';
 import Message from '../../shared/components/Message';
 import api from '../../utils/api';
+import { getImageUrl } from '../../utils/imageUrl';
 import { Plus } from 'lucide-react';
 import { formatCurrency } from '../../utils/formatCurrency';
 
@@ -188,7 +189,7 @@ const MenuItemsList = () => {
       render: (row) => (
         <div className="menu-image">
           <img 
-            src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${row.image_url}`} 
+            src={getImageUrl(row.image_url)} 
             alt={row.name}
           />
         </div>
@@ -404,7 +405,7 @@ const MenuItemsList = () => {
           <div className="menu-detail">
             <div className="detail-image">
               <img 
-                src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${currentMenuItem.image_url}`} 
+                src={getImageUrl(currentMenuItem.image_url)} 
                 alt={currentMenuItem.name} 
               />
             </div>

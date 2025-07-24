@@ -4,6 +4,7 @@ import api from '../../utils/api';
 import './MenuPage.scss';
 import Loader from '../../shared/components/Loader';
 import { formatCurrency } from '../../utils/formatCurrency';
+import { getImageUrl } from '../../utils/imageUrl'; // Import the helper
 import { Coffee, Search, Utensils, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 import SocialMediaIcon from '../../shared/components/SocialMediaIcon';
 import logoImage from '../../images/logo.png';
@@ -199,7 +200,7 @@ const MenuPage = () => {
                 <div key={menuItem.id} className="menu-card">
                   <div className="menu-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${menuItem.image_url}`} 
+                      src={getImageUrl(menuItem.image_url)} 
                       alt={menuItem.name}
                     />
                   </div>

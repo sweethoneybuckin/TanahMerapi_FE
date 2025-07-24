@@ -8,6 +8,7 @@ import ImageUploader from '../components/ImageUploader';
 import Loader from '../../shared/components/Loader';
 import Message from '../../shared/components/Message';
 import api from '../../utils/api';
+import { getImageUrl } from '../../utils/imageUrl';
 import { Plus, Calendar, Package, Percent, ArrowRight } from 'lucide-react';
 import { formatCurrency, formatDate } from '../../utils/formatCurrency';
 
@@ -509,7 +510,7 @@ const PromotionsList = () => {
                   
                   <div className="package-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${pkg.image_url}`} 
+                      src={getImageUrl(pkg.image_url)} 
                       alt={pkg.name}
                     />
                   </div>
@@ -551,7 +552,7 @@ const PromotionsList = () => {
                 {selectedPackageImages.slice(0, 3).map((image, index) => (
                   <div key={index} className="preview-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${image}`} 
+                      src={getImageUrl(image)} 
                       alt={`Selected package ${index + 1}`}
                     />
                     {index === 0 && (
@@ -696,7 +697,7 @@ const PromotionsList = () => {
                   
                   <div className="package-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${pkg.image_url}`} 
+                      src={getImageUrl(pkg.image_url)} 
                       alt={pkg.name}
                     />
                   </div>
@@ -738,7 +739,7 @@ const PromotionsList = () => {
                 {selectedPackageImages.slice(0, 3).map((image, index) => (
                   <div key={index} className="preview-image">
                     <img 
-                      src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${image}`} 
+                      src={getImageUrl(image)} 
                       alt={`Selected package ${index + 1}`}
                     />
                     {index === 0 && (
@@ -758,7 +759,7 @@ const PromotionsList = () => {
           apiUrl={process.env.REACT_APP_API_URL}
           label="Gambar Promo (Opsional)"
           helpText="Jika tidak diunggah, gambar dari paket pertama akan digunakan."
-          required={false}
+required={false}
         />
       </FormModal>
       
@@ -786,7 +787,7 @@ const PromotionsList = () => {
             {currentPromotion.image_url && (
               <div className="detail-image">
                 <img 
-                  src={`${process.env.REACT_APP_API_URL?.replace('/api', '')}${currentPromotion.image_url}`} 
+                  src={getImageUrl(currentPromotion.image_url)} 
                   alt={currentPromotion.title} 
                 />
               </div>
